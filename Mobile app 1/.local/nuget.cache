@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Wb3Dfb7WSjMvkwTdEZs0bF4BP8aS0f+5cnBhfWmk7Bjq1bg++T3txTiILPKBSwzLrv9bVpp0Tv95OYKMTeg67w==",
+  "dgSpecHash": "PKvSdYUDHOuxB1UuZTaKuJRaWcacqtexnuURDLZ1JI72ARFJE/WKv0csuJQBZplM4jaBK9vLH63LVkTT63f9HQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AlexandruCilea\\Documents\\UiPath\\Mobile app 1\\.local\\",
+  "projectFilePath": "C:\\Users\\AlexandruCilea\\Documents\\GitHub\\MobileDeApps\\Mobile app 1\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\AlexandruCilea\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",
     "C:\\Users\\AlexandruCilea\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",
@@ -75,7 +75,7 @@
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\AlexandruCilea\\Documents\\UiPath\\Mobile app 1\\.local",
+      "filePath": "C:\\Users\\AlexandruCilea\\Documents\\GitHub\\MobileDeApps\\Mobile app 1\\.local",
       "message": "Microsoft.Extensions.Primitives 3.1.6 depends on System.Memory (>= 4.5.2) but System.Memory 4.5.2 was not found. An approximate best match of System.Memory 4.5.3 was resolved.",
       "libraryId": "System.Memory",
       "targetGraphs": [

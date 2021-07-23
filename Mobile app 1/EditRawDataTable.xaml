@@ -1,0 +1,96 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TesdWf" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="o_medie" Type="OutArgument(x:String)" />
+    <x:Property Name="o_max" Type="OutArgument(x:String)" />
+    <x:Property Name="o_min" Type="OutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1515,761</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>TesdWf_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="52">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Edit Cells" sap:VirtualizedContainerService.HintSize="376,538" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="dt" />
+      <Variable x:TypeArguments="scg:List(x:Int32)" Default="[new list(of integer)]" Name="list" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[dt]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Foaie1" WorkbookPath="MazdaCX5.xlsx" />
+    <ui:InvokeCode ContinueOnError="{x:Null}" Code="'Remove empty price cells&#xD;&#xA;io_dt.AsEnumerable.Where(Function(x) Not String.IsNullOrWhiteSpace(x(2).ToString))&#xD;&#xA;&#xD;&#xA;'Modify price column removing &quot;EUR&quot; and the dot, in order to be easily converted to int&#xD;&#xA;'Adding prices to a list in order to extract min max and average value&#xD;&#xA;'Adding fabrication date&#xD;&#xA;'Removing &quot;Nou&quot; tag from titles where needed&#xD;&#xA;&#xD;&#xA;Try &#xD;&#xA;For Each dr As datarow In io_dt.Rows&#xD;&#xA;&#x9;If Not String.IsNullOrWhiteSpace(dr(2).ToString)&#xD;&#xA;&#x9;&#x9;dr(2) = dr(2).ToString.split(&quot;EUR&quot;.ToCharArray)(0).Replace(&quot;.&quot;,&quot;&quot;).Trim&#xD;&#xA;&#x9;&#x9;io_list.Add(CInt(dr(2)))&#xD;&#xA;&#x9;&#x9;dr(1) = dr(1).ToString.Split(&quot;,&quot;c)(1)&#xD;&#xA;&#x9;End If&#xD;&#xA;&#x9;If(dr(0).ToString.ToLower.Contains(&quot;nou&quot;))&#xD;&#xA;&#x9;&#x9;dr(0) = dr(0).ToString.Replace(&quot;Nou&quot;,&quot;&quot;).Trim&#xD;&#xA;&#x9;End If&#xD;&#xA;&#x9;&#xD;&#xA;Next&#xD;&#xA;&#xD;&#xA;Catch ex As Exception&#xD;&#xA;&#x9;Console.WriteLine(ex.Message)&#xD;&#xA;&#x9;Throw ex&#xD;&#xA;&#x9;&#xD;&#xA;End Try&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;o_medie =io_list.Average.ToString&#xD;&#xA;o_max = io_list(0).ToString&#xD;&#xA;o_min = io_list((io_list.count)-1).ToString&#xD;&#xA;" DisplayName="Invoke code" sap:VirtualizedContainerService.HintSize="334,164" sap2010:WorkflowViewState.IdRef="InvokeCode_1">
+      <ui:InvokeCode.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt">[dt]</InOutArgument>
+        <InOutArgument x:TypeArguments="scg:List(x:Int32)" x:Key="io_list">[list]</InOutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="o_medie">[o_medie]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="o_min">[o_min]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="o_max">[o_max]</OutArgument>
+      </ui:InvokeCode.Arguments>
+    </ui:InvokeCode>
+    <ui:WriteRange AddHeaders="False" DataTable="[dt]" DisplayName="Write edited data to new excel" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Sheet1" WorkbookPath="MazdaCX5_new.xlsx">
+      <ui:WriteRange.StartingCell>
+        <InArgument x:TypeArguments="x:String">
+          <Literal x:TypeArguments="x:String" Value="" />
+        </InArgument>
+      </ui:WriteRange.StartingCell>
+    </ui:WriteRange>
+  </Sequence>
+</Activity>

@@ -5017,9 +5017,9 @@
     "restore": {
       "projectUniqueName": "Mobile app 1",
       "projectName": "Mobile app 1",
-      "projectPath": "C:\\Users\\AlexandruCilea\\Documents\\UiPath\\Mobile app 1\\.local",
+      "projectPath": "C:\\Users\\AlexandruCilea\\Documents\\GitHub\\MobileDeApps\\Mobile app 1\\.local",
       "packagesPath": "C:\\Users\\AlexandruCilea\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AlexandruCilea\\Documents\\UiPath\\Mobile app 1\\.local"
+      "outputPath": "C:\\Users\\AlexandruCilea\\Documents\\GitHub\\MobileDeApps\\Mobile app 1\\.local"
     },
     "frameworks": {
       "net461": {
